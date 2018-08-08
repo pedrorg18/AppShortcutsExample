@@ -3,10 +3,14 @@ package com.example.proiggimenez.appshortcutsexample;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String ACTION_OPEN_FIRST_SCREEN = "com.example.proiggimenez.appshortcutsexample.OPEN_FIRST_SCREEN";
+    private static final String ACTION_OPEN_SECOND_SCREEN = "com.example.proiggimenez.appshortcutsexample.OPEN_SECOND_SCREEN";
 
     Button buttonGoScreen1;
     Button buttonGoScreen2;
@@ -31,6 +35,13 @@ public class MainActivity extends AppCompatActivity {
                 goToScreen2();
             }
         });
+
+        Log.i("ShortcutsExample", "got intent - action: "+getIntent().getAction());
+        if (ACTION_OPEN_FIRST_SCREEN.equals(getIntent().getAction())) {
+            goToScreen1();
+        } else if (ACTION_OPEN_SECOND_SCREEN.equals(getIntent().getAction())) {
+            goToScreen2();
+        }
     }
 
     private void goToScreen1() {
